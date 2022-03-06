@@ -63,7 +63,7 @@ def quantidade_virgulas(texto):
 
 
 #Calcula quantas stop words a frase possui
-def conta_stop_words(texto):
+def conta_stop_words(texto, local):
   
   pln = spacy.load('pt')
   text = pln(texto)
@@ -84,8 +84,8 @@ def predicao(texto):
   text['quantStopWords'] = conta_stop_words(texto)
   data = data.append(text, ignore_index=True) 
 
-  file_KNN = open('/Models/KNN_model.sav', 'rb')
-  file_SVC = open('/Models/KNN_model.sav', 'rb')
+  file_KNN = open('/Models/KNN_model_ ' + local +'.sav', 'rb')
+  file_SVC = open('/Models/KNN_model_ ' + local +'.sav', 'rb')
 
   file_KNN = file_KNN.read()
   file_SVC = file_SVC.read()
