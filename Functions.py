@@ -75,24 +75,25 @@ def conta_stop_words(texto):
       conta = conta+1
   return 100*(conta/len(text))
 
-#Realiza predição
-def pedicao(texto):
-    
+def predicao(texto):
+
+  data = pd.DataFrame()
   text = {}
-  
   text['virgula'] = quantidade_virgulas(texto)
   text['quantPalavras'] = conta_palavras(texto)
   text['canonicas'] = canonicidade(texto)
   text['quantStopWords'] = conta_stop_words(texto)
-  
-  file_KNN = open('Models/KNN_model.txt', 'r')
-  file_SVC = open('Models/KNN_model.txt', 'r')
-  
+  data = data.append(text, ignore_index=True) 
+
+  file_KNN = open('/Models/KNN_model.sav', 'rb')
+  file_SVC = open('/Models/KNN_model.sav', 'rb')
+
+  file_KNN = file_KNN.read()
+  file_SVC = file_SVC.read()
   KNN_prediction = pickle.loads(file_KNN)
   SVC_prediction = pickle.loads(file_SVC)
-  
-  return SVC_prediction.prediction(text), KNN_prediction.prediction(text)
 
+  return SVC_prediction.predict(data)[0], KNN_prediction.predict(data)[0]
 #Cria grafico para visualizar distribuições na base
 def Graficos(dataframe) 
    
