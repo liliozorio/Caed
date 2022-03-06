@@ -415,7 +415,7 @@ def muda_sinonimo(texto):
           palavra = pln(sinonimos)
           if descobre_genero(lista[i].text) == descobre_genero(sinonimos):
             if lista[i].similarity(palavra) > max:
-              max = palavra.similarity(palavra)
+              max = lista[i].similarity(palavra)
               sinonimo = sinonimos
           if not sinonimo == '':
             texto = texto.replace(lista[i].text, sinonimo)
