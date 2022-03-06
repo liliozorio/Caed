@@ -1,5 +1,6 @@
 #Cria modelos de predição
 
+import sys
 from sklearn.metrics import classification_report
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import accuracy_score
@@ -8,7 +9,8 @@ import sklearn.svm as svm
 from sklearn.model_selection import train_test_split
 import pickle
 
-dataframe = pd.read_csv('/content/drive/MyDrive/Prova Caed/train_final.csv')
+local = str(sys.argv[1])
+dataframe = pd.read_csv('Dataset/train_final_ + ' + local +'.csv')
 y = dataframe['level']
 x = dataframe[['virgula', 'quantPalavras', 'canonicas', 'quantStopWords']]
 
@@ -32,8 +34,8 @@ print(classification_report(KNN_prediction, y_test))
 saved_model_knn = pickle.dumps(KNN_model)
 saved_model_svc = pickle.dumps(SVC_model)
 
-file_SVC = open('/Models/SVC_model.sav', 'wb')
-file_KNN = open('/Models/KNN_model.sav', 'wb')
+file_SVC = open('/Models/SVC_model_' + local +'.sav', 'wb')
+file_KNN = open('/Models/KNN_model_' + local +'.sav', 'wb')
 file_SVC.write(saved_model_svc)
 file_KNN.write(saved_model_knn)
 file_SVC.close()
