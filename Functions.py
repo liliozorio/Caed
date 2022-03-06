@@ -410,13 +410,16 @@ def muda_sinonimo(texto):
     if not sinonimos_word == 404:
       max = 0
       sinonimo = ''
-      for sinonimos in sinonimos_word:
-        palavra = pln(sinonimos)
-        if descobre_genero(lista[i].text) == descobre_genero(sinonimos):
-          if lista[i].similarity(palavra) > max:
-            max = palavra.similarity(palavra)
-            sinonimo = sinonimos
-        if not sinonimo == '':
-          texto = texto.replace(lista[i].text, sinonimo)
+      try:
+        for sinonimos in sinonimos_word:
+          palavra = pln(sinonimos)
+          if descobre_genero(lista[i].text) == descobre_genero(sinonimos):
+            if lista[i].similarity(palavra) > max:
+              max = palavra.similarity(palavra)
+              sinonimo = sinonimos
+          if not sinonimo == '':
+            texto = texto.replace(lista[i].text, sinonimo)
+      except:
+        pass
 
   return texto
