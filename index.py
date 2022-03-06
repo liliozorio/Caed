@@ -3,8 +3,10 @@ import string
 import pandas as pd
 import random
 import seaborn as sns
+import sys
 
-dataframe = pd.read_csv('/Dataset/dataset_caed/training.csv')
+local = str(sys.argv[1])
+dataframe = pd.read_csv('/Dataset/dataset_caed/training_ ' + local +'.csv')
 
 grau_SVC = []
 grau_NNK = []
@@ -15,7 +17,7 @@ for i in range(0,100):
   frase = dataframe['text'][randomico]
   modificada = muda_sinonimo(frase)
   modificada = muda_genero(modificada)
-  classificacao_geral = predicao(modificada)
+  classificacao_geral = predicao(modificada, local)
   classificacao_SVC = classificacao_geral[0]
   classificacao_NNK = classificacao_geral[1]
   frases_modificadas.append(modificada)
