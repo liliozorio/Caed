@@ -46,7 +46,6 @@ def canonicidade(texto):
 #Calcula quantas palavras a frase possui
 def conta_palavras(texto):
 
-  print(texto)
   pln = spacy.load('pt')
   text = pln(texto)
   return len(text)
