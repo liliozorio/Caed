@@ -29,8 +29,8 @@
 
 ## Como Rodar
 
-<p>O programa tem 3 arquivos que podem ser executados:</p>
+<p>O programa tem 3 arquivos que podem ser executados, os 3 deve-se passar um argumento escrito 'frase' ou 'texto' para selecionar qual o dataset vai ser utilizado:</p>
 
-- Caso deseje-se gerar uma nova base deve-se rodar o arquivo AjustaDatabase.py - `python AjustaDatabase.py`
-- Caso deseje-se refazer o modelo de predição deve-se rodar o arquivo ModelPredicao.py - `python ModelPredicao.py`
-- Caso deseje testar os modelos de predição e de modificação de palavras deve-se rodar o arquivo index.py - `python index.py`
+- Caso deseje-se gerar uma nova base deve-se rodar o arquivo AjustaDatabase.py - `python AjustaDatabase.py frase/texto`
+- Caso deseje-se refazer o modelo de predição deve-se rodar o arquivo ModelPredicao.py - `python ModelPredicao.py frase/texto`
+- Caso deseje testar os modelos de predição e de modificação de palavras deve-se rodar o arquivo index.py - `python index.py frase/texto`
