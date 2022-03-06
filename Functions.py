@@ -99,7 +99,7 @@ def Graficos(dataframe)
   sns.countplot(dataframe['level'], label = 'Contagem');
   sns.heatmap(pd.isnull(dataframe));
 
-#Tenta achar o genero da palavra passada por parametro
+
 def descobre_genero(texto):
   if texto[len(texto)-5:len(texto)] == 'grama' or texto[len(texto)-6:len(texto)] == 'gramas':
     return 'masculino'
@@ -367,7 +367,6 @@ def muda_genero(texto):
   for i in lista:
     try:
       if (lista[i].pos_ == 'NOUN' or lista[i].pos_ == 'PRP') and not lista[i].text in stop_words:
-        print(lista[i].text + ' - ' + lista[i].pos_)
         if not descobre_oposto_substantivo_pronome(lista[i].text)[1] == 'nada':
           lista[i] = descobre_oposto_substantivo_pronome(lista[i].text)[0]
           antecessores = list(text[1].ancestors)
@@ -420,5 +419,4 @@ def muda_sinonimo(texto):
         if not sinonimo == '':
           texto = texto.replace(lista[i].text, sinonimo)
 
-  print(texto)
   return texto
