@@ -1,6 +1,8 @@
 Import Functions
 Import Pandas as pd
+Import sys
 
+local = str(sys.argv[1])
 #Cria bases
 lista1 = []
 lista2 = []
@@ -64,12 +66,12 @@ for i in range(0,20):
     if len(frase) > 2:
       newrow4 = {'text':frase,'level':'4'}
       traning = traning.append(newrow4, ignore_index=True) 
-traning.to_csv('/Dataset/training.csv', index = False)
+traning.to_csv('/Dataset/training_ ' + local +'.csv', index = False)
 
 #Ajusta Dataset
-dataframe = pd.read_csv('/Dataset/training.csv')
+dataframe = pd.read_csv('/Dataset/training_ ' + local +'.csv')
 dataframe['quantPalavras'] = dataframe['text'].apply(conta_palavras)
 dataframe['virgula'] = dataframe['text'].apply(quantidade_virgulas)
 dataframe['quantStopWords'] = dataframe['text'].apply(conta_stop_words)
 dataframe['canonicas'] = dataframe['text'].apply(canonicidade)
-dataframe.to_csv('/Dataset/train_final.csv', index = False)
+dataframe.to_csv('/Dataset/train_final_ ' + local +'.csv', index = False)
