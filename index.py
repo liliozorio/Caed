@@ -4,7 +4,7 @@ import pandas as pd
 import random
 import seaborn as sns
 
-dataframe = pd.read_csv('/dataset/dataset_caed/training.csv')
+dataframe = pd.read_csv('/Dataset/dataset_caed/training.csv')
 
 grau_SVC = []
 grau_NNK = []
